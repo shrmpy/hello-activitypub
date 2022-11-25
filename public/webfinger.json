@@ -1,0 +1,11 @@
+{
+	"subject": "acct:shrmpy@stellar-llama-96583b.netlify.app",
+
+	"links": [
+		{
+			"rel": "self",
+			"type": "application/activity+json",
+			"href": "https://stellar-llama-96583b.netlify.app/actor"
+		}
+	]
+}

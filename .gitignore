@@ -1,32 +1,23 @@
-# See https://help.github.com/ignore-files/ for more about ignoring files.
-
-# compiled output
-/dist/
-/tmp/
+# build output
+dist/
+.output/
 
 # dependencies
-/bower_components/
-/node_modules/
+node_modules/
 
-# misc
-/.env*
-/.pnp*
-/.sass-cache
-/.eslintcache
-/connect.lock
-/coverage/
-/libpeerconnection.log
-/npm-debug.log*
-/testem.log
-/yarn-error.log
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# ember-try
-/.node_modules.ember-try/
-/bower.json.ember-try
-/npm-shrinkwrap.json.ember-try
-/package.json.ember-try
-/package-lock.json.ember-try
-/yarn.lock.ember-try
 
-# broccoli-debug
-/DEBUG/
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# Local Netlify folder
+.netlify
