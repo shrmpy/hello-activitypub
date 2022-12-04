@@ -5,7 +5,7 @@
 		{
 			"rel": "self",
 			"type": "application/activity+json",
-			"href": "https://stellar-llama-96583b.netlify.app/actor"
+			"href": "https://stellar-llama-96583b.netlify.app/u/shrmpy"
 		}
 	]
 }
