@@ -18,7 +18,7 @@
 
 
 [[headers]] 
-  for = "/u/*"
+  for = "/users/*"
   [headers.values]
     Content-Type = "application/activity+json"
 
@@ -70,8 +70,14 @@
   query = {resource = "https://stellar-llama-96583b.netlify.app/"}
 
 [[redirects]] 
-  from = "/u/shrmpy"
+  from = "/users/shrmpy"
   to = "/actor.json"
+  status = 200
+  force = true
+
+[[redirects]] 
+  from = "/@shrmpy"
+  to = "/profile/"
   status = 200
   force = true
 
