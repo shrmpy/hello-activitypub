@@ -1,11 +1,19 @@
 {
 	"subject": "acct:shrmpy@stellar-llama-96583b.netlify.app",
-
+	"aliases": [
+		"https://stellar-llama-96583b.netlify.app/@shrmpy",
+		"https://stellar-llama-96583b.netlify.app/users/shrmpy"
+	],
 	"links": [
+		{
+			"rel": "http://webfinger.net/rel/profile-page",
+			"type": "text/html",
+			"href": "https://stellar-llama-96583b.netlify.app/@shrmpy"
+		},
 		{
 			"rel": "self",
 			"type": "application/activity+json",
-			"href": "https://stellar-llama-96583b.netlify.app/u/shrmpy"
+			"href": "https://stellar-llama-96583b.netlify.app/users/shrmpy"
 		}
 	]
 }
