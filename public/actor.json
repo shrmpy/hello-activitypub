@@ -3,11 +3,31 @@
 		"https://www.w3.org/ns/activitystreams",
 		"https://w3id.org/security/v1"
 	],
-
 	"id": "https://stellar-llama-96583b.netlify.app/users/shrmpy",
 	"type": "Person",
-	"preferredUsername": "shrmpy",
+	"following": "https://stellar-llama-96583b.netlify.app/users/shrmpy/following",
+	"followers": "https://stellar-llama-96583b.netlify.app/users/shrmpy/followers",
+	"featured": "https://stellar-llama-96583b.netlify.app/users/shrmpy/featured",
 	"inbox": "https://stellar-llama-96583b.netlify.app/api/inbox",
+	"outbox": "https://stellar-llama-96583b.netlify.app/api/outbox",
+	"preferredUsername": "shrmpy",
+	"name": "Shrimp Research",
+	"summary": "Static mastodon profile reply test",
+	"url": "https://gitlab.com/shrmpy/hello-activitypub",
+	"manuallyApprovesFollowers": true,
+	"discoverable": true,
+	"published": "2049-06-10T00:00:00Z",
+
+    "icon": {
+        "type": "Image",
+        "mediaType": "image/jpeg",
+        "url": "https://stellar-llama-96583b.netlify.app/icon.jpg"
+    },
+    "image": {
+        "type": "Image",
+        "mediaType": "image/jpeg",
+        "url": "https://stellar-llama-96583b.netlify.app/image.png"
+    }
 
 	"publicKey": {
 		"id": "https://stellar-llama-96583b.netlify.app/users/shrmpy#main-key",

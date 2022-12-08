@@ -70,6 +70,36 @@
   query = {resource = "https://stellar-llama-96583b.netlify.app/"}
 
 [[redirects]] 
+  from = "/users/shrmpy/following"
+  to = "/following.json"
+  status = 200
+  force = true
+
+[[redirects]] 
+  from = "/users/shrmpy/followers"
+  to = "/followers.json"
+  status = 200
+  force = true
+
+[[redirects]] 
+  from = "/users/shrmpy/featured"
+  to = "/featured.json"
+  status = 200
+  force = true
+
+[[redirects]] 
+  from = "/users/shrmpy/toots"
+  to = "/toots.json"
+  status = 200
+  force = true
+
+[[redirects]] 
+  from = "/shrmpy/posts"
+  to = "/posts"
+  status = 200
+  force = true
+
+[[redirects]] 
   from = "/users/shrmpy"
   to = "/actor.json"
   status = 200
