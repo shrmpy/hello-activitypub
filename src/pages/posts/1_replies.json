@@ -1,0 +1,11 @@
+{
+  "@context": "https://www.w3.org/ns/activitystreams",
+  "id": "https://stellar-llama-96583b.netlify.app/shrmpy/posts/1_replies",
+  "type": "Collection",
+  "first": {
+    "id": "https://stellar-llama-96583b.netlify.app/shrmpy/posts/1_replies",
+    "type": "CollectionPage",
+    "next": "https://stellar-llama-96583b.netlify.app/shrmpy/posts/1_replies_more",
+    "partOf": "https://stellar-llama-96583b.netlify.app/shrmpy/posts/1_replies",
+    "items": []
+  }
