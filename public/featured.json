@@ -1,26 +1,26 @@
 {
-  "id": "https://stellar-llama-96583b.netlify.app/users/shrmpy/featured",
+  "id": "https://mastodon.dangersource.net/users/shrmpy/featured",
   "type": "OrderedCollection",
   "totalItems": 1,
   "orderedItems": [
     {
-      "id": "https://stellar-llama-96583b.netlify.app/1",
+      "id": "https://mastodon.dangersource.net/1",
       "type": "Note",
       "summary": null,
       "inReplyTo": null,
       "published": "2022-04-26T00:11:17Z",
-      "url": "https://stellar-llama-96583b.netlify.app/1",
-      "attributedTo": "https://stellar-llama-96583b.netlify.app/users/shrmpy",
+      "url": "https://mastodon.dangersource.net/1",
+      "attributedTo": "https://mastodon.dangersource.net/users/shrmpy",
       "to": [
         "https://www.w3.org/ns/activitystreams#Public"
       ],
       "cc": [
-        "https://stellar-llama-96583b.netlify.app/users/shrmpy/followers"
+        "https://mastodon.dangersource.net/users/shrmpy/followers"
       ],
       "sensitive": false,
-      "atomUri": "https://stellar-llama-96583b.netlify.app/1",
+      "atomUri": "https://mastodon.dangersource.net/1",
       "inReplyToAtomUri": null,
-      "conversation": "tag:stellar-llama-96583b.netlify.app,2022-04-26:objectId=288755344:objectType=Conversation",
+      "conversation": "tag:mastodon.dangersource.net,2022-04-26:objectId=288755344:objectType=Conversation",
       "content": "<p>THIS IS PINNED</p>",
       "contentMap": {
         "en": "<p>THIS IS PINNED</p>"
@@ -28,12 +28,12 @@
       "attachment": [],
       "tag": [],
       "replies": {
-        "id": "https://stellar-llama-96583b.netlify.app/1_replies",
+        "id": "https://mastodon.dangersource.net/1_replies",
         "type": "Collection",
         "first": {
           "type": "CollectionPage",
-          "next": "https://stellar-llama-96583b.netlify.app/1_replies_more",
-          "partOf": "https://stellar-llama-96583b.netlify.app/1_replies",
+          "next": "https://mastodon.dangersource.net/1_replies_more",
+          "partOf": "https://mastodon.dangersource.net/1_replies",
           "items": []
         }
       }

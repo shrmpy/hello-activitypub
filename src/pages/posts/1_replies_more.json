@@ -1,7 +1,7 @@
 {
     "@context": "https://www.w3.org/ns/activitystreams",
-    "id": "https://stellar-llama-96583b.netlify.app/shrmpy/posts/1_replies_more",
+    "id": "https://mastodon.dangersource.net/shrmpy/posts/1_replies_more",
     "type": "CollectionPage",
-    "partOf": "https://stellar-llama-96583b.netlify.app/shrmpy/posts/1_replies",
+    "partOf": "https://mastodon.dangersource.net/shrmpy/posts/1_replies",
     "items": []
 }
