@@ -1,7 +1,7 @@
 {
     "@context": "https://www.w3.org/ns/activitystreams",
-    "id": "https://stellar-llama-96583b.netlify.app/users/shrmpy/following",
+    "id": "https://mastodon.dangersource.net/users/shrmpy/following",
     "type": "OrderedCollection",
     "totalItems": 1,
-    "first": "https://stellar-llama-96583b.netlify.app/following_accts"
+    "first": "https://mastodon.dangersource.net/following_accts"
 }

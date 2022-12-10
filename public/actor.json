@@ -3,13 +3,13 @@
 		"https://www.w3.org/ns/activitystreams",
 		"https://w3id.org/security/v1"
 	],
-	"id": "https://stellar-llama-96583b.netlify.app/users/shrmpy",
+	"id": "https://mastodon.dangersource.net/users/shrmpy",
 	"type": "Person",
-	"following": "https://stellar-llama-96583b.netlify.app/users/shrmpy/following",
-	"followers": "https://stellar-llama-96583b.netlify.app/users/shrmpy/followers",
-	"featured": "https://stellar-llama-96583b.netlify.app/users/shrmpy/featured",
-	"inbox": "https://stellar-llama-96583b.netlify.app/api/inbox",
-	"outbox": "https://stellar-llama-96583b.netlify.app/api/outbox",
+	"following": "https://mastodon.dangersource.net/users/shrmpy/following",
+	"followers": "https://mastodon.dangersource.net/users/shrmpy/followers",
+	"featured": "https://mastodon.dangersource.net/users/shrmpy/featured",
+	"inbox": "https://mastodon.dangersource.net/api/inbox",
+	"outbox": "https://mastodon.dangersource.net/api/outbox",
 	"preferredUsername": "shrmpy",
 	"name": "Shrimp Research",
 	"summary": "Static mastodon profile reply test",
@@ -21,17 +21,17 @@
     "icon": {
         "type": "Image",
         "mediaType": "image/jpeg",
-        "url": "https://stellar-llama-96583b.netlify.app/icon.jpg"
+        "url": "https://mastodon.dangersource.net/icon.jpg"
     },
     "image": {
         "type": "Image",
         "mediaType": "image/jpeg",
-        "url": "https://stellar-llama-96583b.netlify.app/image.png"
+        "url": "https://mastodon.dangersource.net/image.png"
     }
 
 	"publicKey": {
-		"id": "https://stellar-llama-96583b.netlify.app/users/shrmpy#main-key",
-		"owner": "https://stellar-llama-96583b.netlify.app/users/shrmpy",
+		"id": "https://mastodon.dangersource.net/users/shrmpy#main-key",
+		"owner": "https://mastodon.dangersource.net/users/shrmpy",
 		"publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsu5c5OjlLRjvJfFxLGIp\nYB3O6eB2QIvCGlHwMDywz9kbBjQS/D51g2GSSZ3jvHzB5MTN+ip+2MCLt31tVKX9\nD0eMPNBHFWS+bUvQ7jeD7kDvfTeLq7Wpd4y4s2Rk0oUXmAF6668erOR6eLYY7PTx\nd023AScvaTrT2Tjo1cyQ62bWokflYSztzEnrPun0gjd++HspUYdGMYK0j3+heGPs\nZUN0On8ZPFJI/4AR7lOsVY+6YCSVH72iNtBQQxPCndrW2JApnWODviPc8gmsi4ud\n2vkWJEo4aN77S0SY+O1A51Bqrnas+zQnzT7nGEBuNPC56/WusdObrGf88rs2ikzU\nfQIDAQAB\n-----END PUBLIC KEY-----\n"
 	}
 }
