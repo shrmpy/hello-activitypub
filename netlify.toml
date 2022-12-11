@@ -46,28 +46,28 @@
   to = "/webfinger.json"
   status = 200
   force = true
-  query = {resource = "acct:shrmpy@stellar-llama-96583b.netlify.app"}
+  query = {resource = "acct:shrmpy@mastodon.dangersource.net"}
 
 [[redirects]] 
   from = "/.well-known/webfinger"
   to = "/webfinger.json"
   status = 200
   force = true
-  query = {resource = "mailto:shrmpy@stellar-llama-96583b.netlify.app"}
+  query = {resource = "mailto:shrmpy@mastodon.dangersource.net"}
 
 [[redirects]] 
   from = "/.well-known/webfinger"
   to = "/webfinger.json"
   status = 200
   force = true
-  query = {resource = "https://stellar-llama-96583b.netlify.app"}
+  query = {resource = "https://mastodon.dangersource.net"}
 
 [[redirects]] 
   from = "/.well-known/webfinger"
   to = "/webfinger.json"
   status = 200
   force = true
-  query = {resource = "https://stellar-llama-96583b.netlify.app/"}
+  query = {resource = "https://mastodon.dangersource.net/"}
 
 [[redirects]] 
   from = "/users/shrmpy/following"
@@ -107,7 +107,7 @@
 
 [[redirects]] 
   from = "/@shrmpy"
-  to = "/profile/"
+  to = "/actor.json"
   status = 200
   force = true
 
