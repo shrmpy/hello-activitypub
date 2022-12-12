@@ -3,13 +3,13 @@
 		"https://www.w3.org/ns/activitystreams",
 		"https://w3id.org/security/v1"
 	],
-	"id": "https://mastodon.dangersource.net/users/shrmpy",
+	"id": "https://mastodon.dangersource.net/u/shrmpy",
 	"type": "Person",
-	"following": "https://mastodon.dangersource.net/users/shrmpy/following",
-	"followers": "https://mastodon.dangersource.net/users/shrmpy/followers",
-	"featured": "https://mastodon.dangersource.net/users/shrmpy/featured",
-	"inbox": "https://mastodon.dangersource.net/api/inbox",
-	"outbox": "https://mastodon.dangersource.net/api/outbox",
+	"following": "https://mastodon.dangersource.net/api/sort",
+	"followers": "https://mastodon.dangersource.net/api/sort",
+	"featured": "https://mastodon.dangersource.net/api/sort",
+	"inbox": "https://mastodon.dangersource.net/api/sort",
+	"outbox": "https://mastodon.dangersource.net/api/sort",
 	"preferredUsername": "shrmpy",
 	"name": "Shrimp Research",
 	"summary": "Static mastodon profile reply test",
@@ -30,8 +30,8 @@
     }
 
 	"publicKey": {
-		"id": "https://mastodon.dangersource.net/users/shrmpy#main-key",
-		"owner": "https://mastodon.dangersource.net/users/shrmpy",
+		"id": "https://mastodon.dangersource.net/u/shrmpy#main-key",
+		"owner": "https://mastodon.dangersource.net/u/shrmpy",
 		"publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsu5c5OjlLRjvJfFxLGIp\nYB3O6eB2QIvCGlHwMDywz9kbBjQS/D51g2GSSZ3jvHzB5MTN+ip+2MCLt31tVKX9\nD0eMPNBHFWS+bUvQ7jeD7kDvfTeLq7Wpd4y4s2Rk0oUXmAF6668erOR6eLYY7PTx\nd023AScvaTrT2Tjo1cyQ62bWokflYSztzEnrPun0gjd++HspUYdGMYK0j3+heGPs\nZUN0On8ZPFJI/4AR7lOsVY+6YCSVH72iNtBQQxPCndrW2JApnWODviPc8gmsi4ud\n2vkWJEo4aN77S0SY+O1A51Bqrnas+zQnzT7nGEBuNPC56/WusdObrGf88rs2ikzU\nfQIDAQAB\n-----END PUBLIC KEY-----\n"
 	}
 }
