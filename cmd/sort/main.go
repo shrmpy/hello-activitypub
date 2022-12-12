@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-
 	"log"
 	"net/http"
 	"strings"
@@ -17,11 +16,15 @@ func main() {
 }
 
 func handler(ev events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	logActivity("RCV", ev.Headers, ev.Body)
+
 	switch ev.HTTPMethod {
 	case http.MethodPost:
 		return consumePostRequest(ev)
 	case http.MethodGet:
 		return consumeGetRequest(ev)
+	case "OPTIONS":
+		return blankResponse("", http.StatusOK), nil
 	default:
 		return events.APIGatewayProxyResponse{
 			StatusCode: http.StatusInternalServerError,
@@ -51,7 +54,7 @@ func consumePostRequest(ev events.APIGatewayProxyRequest) (events.APIGatewayProx
 		}, nil
 	}
 
-	logActivity("REQPOST", ev.Headers, ev.Body)
+	////logActivity("REQPOST", ev.Headers, ev.Body)
 
 	//TODO send Accept reply
 	return events.APIGatewayProxyResponse {
@@ -61,8 +64,7 @@ func consumePostRequest(ev events.APIGatewayProxyRequest) (events.APIGatewayProx
 }
 func consumeGetRequest(ev events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	//TODO incoming 
-
-	logActivity("REQGET", ev.Headers, ev.Body)
+	////logActivity("REQGET", ev.Headers, ev.Body)
 
 	//TODO send reply
 	return events.APIGatewayProxyResponse {
@@ -114,5 +116,32 @@ type acceptResponse struct {
 	ActivityType string `json:"type"`
 	Actor string `json:"actor"`
 	Object string `json:"object"`
+}
+
+
+func enableCors(headers map[string]string) map[string]string {
+	m := map[string]string{
+
+		"Access-Control-Allow-Origin":  "*",
+		"Access-Control-Allow-Methods": "POST, GET, OPTIONS, PUT",
+		"Access-Control-Allow-Headers": "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization",
+	}
+	// TODO merge, if CORS headers exist
+	for key, val := range headers {
+		m[key] = val
+	}
+	return m
+}
+
+func blankResponse(descr string, status int) events.APIGatewayProxyResponse {
+
+	h := enableCors(make(map[string]string))
+	////h["Content-Type"] = "application/json"
+
+	return events.APIGatewayProxyResponse{
+
+		Headers:    h,
+		StatusCode: status,
+	}
 }
 

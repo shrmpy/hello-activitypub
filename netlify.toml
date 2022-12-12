@@ -18,7 +18,7 @@
 
 
 [[headers]] 
-  for = "/users/*"
+  for = "/u/*"
   [headers.values]
     Content-Type = "application/activity+json"
 
@@ -70,46 +70,15 @@
   query = {resource = "https://mastodon.dangersource.net/"}
 
 [[redirects]] 
-  from = "/users/shrmpy/following"
-  to = "/following.json"
-  status = 200
-  force = true
-
-[[redirects]] 
-  from = "/users/shrmpy/followers"
-  to = "/followers.json"
-  status = 200
-  force = true
-
-[[redirects]] 
-  from = "/users/shrmpy/featured"
-  to = "/featured.json"
-  status = 200
-  force = true
-
-[[redirects]] 
-  from = "/users/shrmpy/toots"
-  to = "/toots.json"
-  status = 200
-  force = true
-
-[[redirects]] 
-  from = "/shrmpy/posts"
-  to = "/posts"
-  status = 200
-  force = true
-
-[[redirects]] 
-  from = "/users/shrmpy"
+  from = "/u/shrmpy"
   to = "/actor.json"
   status = 200
   force = true
 
 [[redirects]] 
   from = "/@shrmpy"
-  to = "/actor.json"
+  to = "/u/shrmpy"
   status = 200
   force = true
-
 
 
