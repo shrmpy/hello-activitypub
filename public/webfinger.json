@@ -1,13 +1,13 @@
 {
-	"subject": "acct:shrmpy@mastodon.dangersource.net",
+	"subject": "acct:shrmpy@stellar-llama-96583b.netlify.app",
 	"aliases": [
-		"https://mastodon.dangersource.net/@shrmpy",
-		"https://mastodon.dangersource.net/u/shrmpy"
+		"https://stellar-llama-96583b.netlify.app/@shrmpy",
+		"https://stellar-llama-96583b.netlify.app/u/shrmpy"
 	],
 	"links": [{
 			"rel": "self",
 			"type": "application/activity+json",
-			"href": "https://mastodon.dangersource.net/u/shrmpy"
+			"href": "https://stellar-llama-96583b.netlify.app/u/shrmpy"
 		}
 	]
 }
