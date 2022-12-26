@@ -4,6 +4,16 @@ Following the
  and absorbing [spec](https://www.w3.org/TR/activitypub/)
  in morsels
 
+
+<a href="https://app.netlify.com/start/deploy?repository=https://gitlab.com/shrmpy/hello-activitypub">
+    <img src="https://www.netlify.com/img/deploy/button.svg"/></a>
+
+
+### Requirements
+- Netlify account
+- Discord webhook (OPTIONAL)
+
+
 ## Credits
 Reference AP Inbox
   by [Darius Kazemi](https://github.com/dariusk/express-activitypub) ([LICENSE](https://github.com/dariusk/express-activitypub/blob/master/LICENSE-MIT))

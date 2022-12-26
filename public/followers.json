@@ -1,7 +1,0 @@
-{
-    "@context": "https://www.w3.org/ns/activitystreams",
-    "id": "https://stellar-llama-96583b.netlify.app/u/shrmpy/followers",
-    "type": "OrderedCollection",
-    "totalItems": 1,
-    "first": "https://stellar-llama-96583b.netlify.app/follower_accts"
-}
