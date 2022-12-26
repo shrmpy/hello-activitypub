@@ -1,4 +1,12 @@
-# example netlify.toml
+# quick deploy
+[template]
+[template.environment]
+  SELF_ACTOR = "username for this *static* instance"
+  DISCORD_WEBHOOK = ""
+  GITHUB_AVATAR = ""
+
+
+# astro+golang build
 [build]
   command = "make build"
   functions = "netlify/functions"
@@ -27,69 +35,4 @@
   [headers.values]
     Content-Type = "application/jrd+json"
     Access-Control-Allow-Origin = "*"
-
-[[redirects]] 
-  from = "/api/*" # simplify all calls to serverless functions
-  to = "/.netlify/functions/:splat" # all function calls will go to this path
-  status = 200 # ok code
-  force = true # ensure to always redirect
-
-[[redirects]] 
-  from = "/.well-known/webfinger"
-  to = "/webfinger.json"
-  status = 400
-  force = true
-  query = {resource = ""}
-
-[[redirects]] 
-  from = "/.well-known/webfinger"
-  to = "/webfinger.json"
-  status = 200
-  force = true
-  query = {resource = "acct:shrmpy@stellar-llama-96583b.netlify.app"}
-
-[[redirects]] 
-  from = "/.well-known/webfinger"
-  to = "/webfinger.json"
-  status = 200
-  force = true
-  query = {resource = "mailto:shrmpy@stellar-llama-96583b.netlify.app"}
-
-[[redirects]] 
-  from = "/.well-known/webfinger"
-  to = "/webfinger.json"
-  status = 200
-  force = true
-  query = {resource = "https://stellar-llama-96583b.netlify.app"}
-
-[[redirects]] 
-  from = "/.well-known/webfinger"
-  to = "/webfinger.json"
-  status = 200
-  force = true
-  query = {resource = "https://stellar-llama-96583b.netlify.app/"}
-
-[[redirects]] 
-  from = "/u/shrmpy"
-  to = "/actor.json"
-  status = 200
-  force = true
-
-[[redirects]] 
-  from = "/@shrmpy"
-  to = "/u/shrmpy"
-  status = 200
-  force = true
-
-[[redirects]] 
-  from = "/u/shrmpy/followers"
-  to = "/followers.json"
-  status = 200
-  force = true
-
-[[redirects]] 
-  from = "/u/shrmpy/following"
-  to = "/following.json"
-  status = 200
-  force = true
 

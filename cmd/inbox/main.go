@@ -4,8 +4,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-
-
 	"log"
 	"net/http"
 	"strings"
@@ -13,6 +11,7 @@ import (
 import (
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
+	"gitlab.com/shrmpy/hap"
 )
 
 func main() {
@@ -60,7 +59,7 @@ func handler(ev events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, 
 	case "Accept":
 		//logAct("ACC", bag, "")
 		var debug = fmt.Sprintf("ACC - %v", bag)
-		webhook(debug)
+		hap.Webhook(debug)
 	case "Follow":
 		// add the follow to debugging/log
 		// check signature to match follower to signer

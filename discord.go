@@ -1,17 +1,22 @@
-package main
+package hap
 
 import (
 	"bytes"
 	"encoding/json"
+
+
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
 )
 
+//go:generate go run gen.go
+
+
 // discord webhook is a fallback because the
 // (faunadb) storage bucket will be next
-func webhook(status string) string {
+func Webhook(status string) string {
 
 	// TODO instead of env var, retrieve webhook from session db table
 
