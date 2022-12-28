@@ -11,8 +11,7 @@ import (
 	"os"
 )
 
-//go:generate go run gen.go
-
+//go:generate go run examples/gen.go
 
 // discord webhook is a fallback because the
 // (faunadb) storage bucket will be next

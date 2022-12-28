@@ -1,0 +1,21 @@
+{
+  "name": "netlify-plugin-activitystub",
+  "version": "1.0.0",
+  "description": "Plugin to stub skeleton files",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "gitlab.com/shrmpy/hello-activitypub"
+  },
+  "keywords": [
+    "netlify",
+    "netlify-plugin",
+    "activitypub"
+  ],
+  "author": "shrmpy",
+  "license": "MIT"
+}
