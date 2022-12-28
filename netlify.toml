@@ -16,13 +16,8 @@
   GO111MODULE = "on"
 
 [[plugins]] 
-  package = "netlify-plugin-cypress"
+  package = "/plugins/netlify-plugin-activitystub"
 
-  [plugins.inputs.postBuild]
-    enable = true
-  
-  [plugin.inputs]
-    enable = false
 
 
 [[headers]] 
