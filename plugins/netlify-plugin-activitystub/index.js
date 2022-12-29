@@ -1,7 +1,8 @@
-import { writeFile } from "fs"
-import { generateKeyPair } from "crypto"
+import { writeFile } from 'fs'
+import { generateKeyPair, randomBytes } from 'crypto'
+import { request } from 'https'
 
-export const onPreBuild = async function({ netlifyConfig }) {
+export const onPreBuild = async function({ netlifyConfig, constants }) {
     // we can call generator (but the coupling)
     ////await run.command("go run examples/gen.go");
     const ac = process.env.SELF_ACTOR;
@@ -20,7 +21,7 @@ export const onPreBuild = async function({ netlifyConfig }) {
       from: "/api/*", to: "/.netlify/functions/:splat", status: 200,
     });
 
-    // follow templates
+    // templates
     const followers = {
       "@context": "https://www.w3.org/ns/activitystreams",
       id: "https://" + sn.concat(".netlify.app/u/", ac, "/followers") ,
@@ -35,6 +36,18 @@ export const onPreBuild = async function({ netlifyConfig }) {
       totalItems: 1,
       first: "https://" + sn.concat(".netlify.app/following_accts")
     };
+    const webfinger = {
+      subject: "acct:" + ac.concat("@", sn, ".netlify.app") ,
+      aliases: [
+        "https://" + sn.concat(".netlify.app/@", ac) ,
+        "https://" + sn.concat(".netlify.app/u/", ac) ,
+      ],
+      aliases: [{
+        rel: "self",
+        type: "application/activity+json",
+        href: "https://" + sn.concat(".netlify.app/u/", ac) ,
+      }],
+    };
     writeFile("./public/followers.json", JSON.stringify(followers), (error) => {
       if (error) {
         console.log("Fail followers.json ", error);
@@ -43,6 +56,11 @@ export const onPreBuild = async function({ netlifyConfig }) {
     writeFile("./public/following.json", JSON.stringify(following), (error) => {
       if (error) {
         console.log("Fail following.json ", error);
+      }
+    });
+    writeFile("./public/webfinger.json", JSON.stringify(webfinger), (error) => {
+      if (error) {
+        console.log("Fail webfinger.json ", error);
       }
     });
 
@@ -57,11 +75,45 @@ export const onPreBuild = async function({ netlifyConfig }) {
         format: 'pem'
       }
     }, (err, publicKey, privateKey) => {
-      // TODO save priv key as env var with api util?
+      // webhook for now (faunadb next)
+      if (process.env.DISCORD_WEBHOOK != "") {
+        const tmpid = randomBytes(16).toString('hex');
+        const shortLink = 'https://' + sn.concat('.netlify.app/l/', tmpid);
+        const notifi = {
+          username: 'build-plugin-activitystub',
+          avatar_url: process.env.GITHUB_AVATAR,
+          content: shortLink,
+        };
+        const whbody = JSON.stringify(notifi);
+        const wh = new URL(process.env.DISCORD_WEBHOOK);
+        const options = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Content-Length': whbody.length,
+          },
+        };
+        const req = request(wh, options, (res) => {});
+        req.on('error', (error) => {
+          console.error(error)
+        });
+        req.write(whbody);
+        req.end();
+
+        //todo add redirect for shortid to pem
+        const priv = { data: 'pem', body: privateKey }
+        writeFile('./public/' + tmpid + '.json', JSON.stringify(priv), (error) => {
+          if (error) {
+            console.log('Fail priv ', error);
+          }
+        });
+
+      }
+
       let dt = new Date();
     // actor template
     const person = {
-      "@context": ["https://www.w3.org/ns/activitystreams", "https://w3id.org/security/v1"],
+      '@context': ['https://www.w3.org/ns/activitystreams','https://w3id.org/security/v1'],
       id: "https://" + sn.concat(".netlify.app/u/", ac) ,
       type: "Person",
       following: "https://" + sn.concat(".netlify.app/u/", ac, "/following") ,
