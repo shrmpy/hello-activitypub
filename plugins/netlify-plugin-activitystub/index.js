@@ -37,30 +37,30 @@ export const onPreBuild = async function({ netlifyConfig, constants }) {
       first: "https://" + sn.concat(".netlify.app/following_accts")
     };
     const webfinger = {
-      subject: "acct:" + ac.concat("@", sn, ".netlify.app") ,
+      subject: 'acct:' + ac.concat('@', sn, '.netlify.app') ,
       aliases: [
-        "https://" + sn.concat(".netlify.app/@", ac) ,
-        "https://" + sn.concat(".netlify.app/u/", ac) ,
+        'https://' + sn.concat('.netlify.app/@', ac) ,
+        'https://' + sn.concat('.netlify.app/u/', ac) ,
       ],
-      aliases: [{
-        rel: "self",
-        type: "application/activity+json",
-        href: "https://" + sn.concat(".netlify.app/u/", ac) ,
+      links: [{
+        rel: 'self',
+        type: 'application/activity+json',
+        href: 'https://' + sn.concat('.netlify.app/u/', ac) ,
       }],
     };
-    writeFile("./public/followers.json", JSON.stringify(followers), (error) => {
+    writeFile('./public/followers.json', JSON.stringify(followers), (error) => {
       if (error) {
-        console.log("Fail followers.json ", error);
+        console.log('Fail followers.json ', error);
       }
     });
-    writeFile("./public/following.json", JSON.stringify(following), (error) => {
+    writeFile('./public/following.json', JSON.stringify(following), (error) => {
       if (error) {
-        console.log("Fail following.json ", error);
+        console.log('Fail following.json ', error);
       }
     });
-    writeFile("./public/webfinger.json", JSON.stringify(webfinger), (error) => {
+    writeFile('./public/webfinger.json', JSON.stringify(webfinger), (error) => {
       if (error) {
-        console.log("Fail webfinger.json ", error);
+        console.log('Fail webfinger.json ', error);
       }
     });
 
@@ -75,10 +75,12 @@ export const onPreBuild = async function({ netlifyConfig, constants }) {
         format: 'pem'
       }
     }, (err, publicKey, privateKey) => {
+      let dt = new Date();
+      const pubdt = dt.toISOString();
       // webhook for now (faunadb next)
       if (process.env.DISCORD_WEBHOOK != "") {
         const tmpid = randomBytes(16).toString('hex');
-        const shortLink = 'https://' + sn.concat('.netlify.app/l/', tmpid);
+        const shortLink = 'https://' + sn.concat('.netlify.app/l/', pubdt);
         const notifi = {
           username: 'build-plugin-activitystub',
           avatar_url: process.env.GITHUB_AVATAR,
@@ -99,10 +101,11 @@ export const onPreBuild = async function({ netlifyConfig, constants }) {
         });
         req.write(whbody);
         req.end();
-
-        //todo add redirect for shortid to pem
+        netlifyConfig.redirects.push({
+          from: '/l/' + pubdt, to: '/' + tmpid.concat('.json'), status: 200,
+        });
         const priv = { data: 'pem', body: privateKey }
-        writeFile('./public/' + tmpid + '.json', JSON.stringify(priv), (error) => {
+        writeFile('./public/' + tmpid.concat('.json'), JSON.stringify(priv), (error) => {
           if (error) {
             console.log('Fail priv ', error);
           }
@@ -110,7 +113,7 @@ export const onPreBuild = async function({ netlifyConfig, constants }) {
 
       }
 
-      let dt = new Date();
+
     // actor template
     const person = {
       '@context': ['https://www.w3.org/ns/activitystreams','https://w3id.org/security/v1'],
@@ -130,7 +133,7 @@ export const onPreBuild = async function({ netlifyConfig, constants }) {
         owner: "https://" + sn.concat(".netlify.app/u/", ac) ,
         publicKeyPem: publicKey
       },
-      published: dt.toISOString()
+      published: pubdt
     };
       writeFile("./public/actor.json", JSON.stringify(person), (error) => {
         if (error) {
