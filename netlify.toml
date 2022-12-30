@@ -20,10 +20,6 @@
 
 
 
-[[headers]] 
-  for = "/u/*"
-  [headers.values]
-    Content-Type = "application/activity+json"
 
 [[headers]] 
   for = "/.well-known/webfinger"
