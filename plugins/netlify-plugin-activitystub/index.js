@@ -14,6 +14,10 @@ export const onPreBuild = async function({ netlifyConfig }) {
         values: { 'Content-Type': "application/activity+json" },
       },
       {
+        for: '/l/*',
+        values: { 'Content-Type': "application/octet-stream" },
+      },
+      {
         for: '/.well-known/webfinger',
         values: {
           'Content-Type': "application/jrd+json",

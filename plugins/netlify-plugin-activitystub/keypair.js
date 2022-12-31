@@ -1,4 +1,4 @@
-import { writeFile } from 'fs'
+import { writeFileSync } from 'fs'
 import { request } from 'https'
 import { promisify } from 'util'
 import { generateKeyPair, randomBytes } from 'crypto'
@@ -11,7 +11,7 @@ const stubActor = async () => {
     const dt = new Date()
     const pubdt = dt.toISOString()
     const tmpfrom = '/l/' + pubdt.replace(/\W/g, '')
-    const tmpto = '/' + randomBytes(16).toString('hex') + '.json'
+    const tmpto = '/' + randomBytes(16).toString('hex') + '.pem'
     tmprd.push({ from: tmpfrom, to: tmpto, status: 200 })
 
     const pair = await promisify(generateKeyPair)('rsa', {
@@ -52,13 +52,8 @@ const stubActor = async () => {
         req.write(whbody)
         req.end()
 
-        ////netlifyConfig.redirects.push({ from: tmpfrom, to: tmpto, status: 200 });
-
-        const priv = { data: 'pem', body: pair.privateKey }
-        writeFile('./public' + tmpto, JSON.stringify(priv), (error) => {
-          if (error) { console.log('Fail priv ', error) }
-        })
-
+        ////const priv = { data: 'pem', body: pair.privateKey }
+        writeFileSync('./public' + tmpto, pair.privateKey)
     }
 
     // actor template
@@ -83,11 +78,7 @@ const stubActor = async () => {
       published: pubdt
     }
 
-      writeFile('./public/actor.json', JSON.stringify(person), (error) => {
-        if (error) { console.log('Fail actor.json ', error) }
-      })
-
-
+      writeFileSync('./public/actor.json', JSON.stringify(person))
 
     // return and let invoking parent add the redirect
     return tmprd
