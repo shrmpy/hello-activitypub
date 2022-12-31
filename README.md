@@ -15,6 +15,12 @@ Following the
 
 
 ## Credits
+Mastodon 6 files
+  by [Justin Garrison](https://github.com/rothgar/static-mastodon/) ([LICENSE](https://github.com/rothgar/static-mastodon/blob/main/LICENSE))
+
+Add ActivityPub Follows to Blog
+  by [Tom MacWright](https://macwright.com/2022/12/09/activitypub.html)
+
 Reference AP Inbox
   by [Darius Kazemi](https://github.com/dariusk/express-activitypub) ([LICENSE](https://github.com/dariusk/express-activitypub/blob/master/LICENSE-MIT))
 
