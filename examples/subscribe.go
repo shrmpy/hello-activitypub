@@ -196,12 +196,13 @@ func readPrivateKey(filename string) (*rsa.PrivateKey, error) {
 	if block == nil {
 		return nil, errors.New("PEM data not found")
 	}
-	////parseResult, err := x509.ParsePKCS8PrivateKey(block.Bytes)
-	key, err = x509.ParsePKCS1PrivateKey(block.Bytes)
+	parseResult, err := x509.ParsePKCS8PrivateKey(block.Bytes)
 	if err != nil {
+		// todo check for the other PEM format
+		//key, err = x509.ParsePKCS1PrivateKey(block.Bytes)
 		return nil, err
 	}
-	////key = parseResult.(*rsa.PrivateKey)
+	key = parseResult.(*rsa.PrivateKey)
 
 	return key, nil
 }
