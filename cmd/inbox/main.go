@@ -11,7 +11,7 @@ import (
 import (
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
-	"gitlab.com/shrmpy/hap"
+	"github.com/shrmpy/hap"
 )
 
 func main() {

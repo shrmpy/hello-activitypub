@@ -1,4 +1,4 @@
-module gitlab.com/shrmpy/hap
+module github.com/shrmpy/hap
 
 go 1.19
 

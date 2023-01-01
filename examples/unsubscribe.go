@@ -28,8 +28,8 @@ import "github.com/google/uuid"
 const subscriberPublicKey = "https://honk.example.com/u/subfrom#main-key"
 const subscriber = "https://honk.example.com/u/subfrom"
 const baseId = "https://honk.example.com/"
-const authorAddr = "https://mastodon.example.com/u/subto/inbox"
-const author = "https://mastodon.example.com/u/subto"
+const authorAddr = "https://mastodon.example.com/users/subto/inbox"
+const author = "https://mastodon.example.com/users/subto"
 
 func main() {
 	conf, err := readArgs()
@@ -39,13 +39,13 @@ func main() {
 
 	var sub = newSubscribe(conf)
 
-	var client = http.Client{Timeout: 30 * time.Second}
+	var client = http.Client{Timeout: 60 * time.Second}
 
 	res, err := client.Do(sub)
 	if err != nil {
 		log.Fatalf("FAIL post request, %v", err.Error)
 	}
-	log.Printf("Status %s", res.StatusCode)
+	log.Printf("Status %d", res.StatusCode)
 
 	bod, err := ioutil.ReadAll(res.Body)
 	if err != nil {
@@ -57,7 +57,7 @@ func main() {
 // instantiate subscribe request
 func newSubscribe(conf *argsCfg) *http.Request {
 	var reqURL = publisher()
-	var buf = topic()
+	var buf = topic(conf.PriorUuid)
 
 	req, err := http.NewRequest(http.MethodPost, reqURL, bytes.NewReader(buf))
 	if err != nil {
@@ -123,16 +123,16 @@ func publisher() string {
 	return authorAddr
 }
 
-// the newsletter which we will subscribe-to
-func topic() []byte {
+// the newsletter which we will unsubscribe-to
+func topic(priorUuid string) []byte {
 	// (? embed the template)
 	/*
 	   	`{
 	   	"@context": "https://www.w3.org/ns/activitystreams",
-	   	"id": "https://honk.example.com/my-first-follow",
-	   	"type": "Follow",
-	   	"actor": "https://honk.example.com/u/subfrom",
-	   	"object": "https://mastodon.example.com/u/subto"
+	   	"id": New-Id,
+	   	"type": "Undo",
+	   	"actor": Same-as-prior-activity-Not-Changed,
+	   	"object": Uuid-of-prior-activity
 	   }`
 	*/
 	var b bytes.Buffer
@@ -140,11 +140,11 @@ func topic() []byte {
 	b.WriteString(`"@context": "https://www.w3.org/ns/activitystreams"`)
 	b.WriteString(`,"id": "`)
 	b.WriteString(newFollowId())
-	b.WriteString(`","type": "Follow"`)
+	b.WriteString(`","type": "Undo"`)
 	b.WriteString(`,"actor": "`)
 	b.WriteString(subscriber)
 	b.WriteString(`","object": "`)
-	b.WriteString(author)
+	b.WriteString(priorUuid)
 	b.WriteString(`"}`)
 	return b.Bytes()
 }
@@ -161,7 +161,8 @@ func newFollowId() string {
 }
 
 type argsCfg struct {
-	Private *rsa.PrivateKey
+	Private   *rsa.PrivateKey
+	PriorUuid string
 }
 
 func readArgs() (*argsCfg, error) {
@@ -169,13 +170,14 @@ func readArgs() (*argsCfg, error) {
 		err  error
 		k    *rsa.PrivateKey
 		priv = flag.String("priv", "private.pem", "PEM private key file path")
+		auui = flag.String("auui", "", "UUID from the prior follow activity")
 	)
 	flag.Parse()
 	log.SetFlags(log.Lshortfile | log.Ltime)
 	if k, err = readPrivateKey(*priv); err != nil {
 		return nil, err
 	}
-	return &argsCfg{Private: k}, nil
+	return &argsCfg{Private: k, PriorUuid: *auui}, nil
 }
 
 func readPrivateKey(filename string) (*rsa.PrivateKey, error) {
@@ -199,8 +201,7 @@ func readPrivateKey(filename string) (*rsa.PrivateKey, error) {
 	}
 	parseResult, err := x509.ParsePKCS8PrivateKey(block.Bytes)
 	if err != nil {
-		// todo check for the other PEM format
-		//key, err = x509.ParsePKCS1PrivateKey(block.Bytes)
+		////key, err = x509.ParsePKCS1PrivateKey(block.Bytes)
 		return nil, err
 	}
 	key = parseResult.(*rsa.PrivateKey)
