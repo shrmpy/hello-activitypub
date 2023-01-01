@@ -1,3 +1,4 @@
+//go:build example
 // +build example
 
 package main
@@ -12,7 +13,7 @@ import (
 var webfingerJSON []byte
 
 const (
-	port = ":8077"
+	port         = ":8077"
 	resourceAcct = "acct:myhandle@mastodon.example.com"
 	resourceMail = "mailto:myhandle@mastodon.example.com"
 	resourceSubd = "https://mastodon.example.com"
@@ -63,4 +64,3 @@ func wfingerHandler(w http.ResponseWriter, r *http.Request) {
 	log.Printf("RCV %s", r.URL.Path)
 	w.Write(webfingerJSON)
 }
-

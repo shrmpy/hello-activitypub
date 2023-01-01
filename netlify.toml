@@ -18,12 +18,3 @@
 [[plugins]] 
   package = "/plugins/netlify-plugin-activitystub"
 
-
-
-
-[[headers]] 
-  for = "/.well-known/webfinger"
-  [headers.values]
-    Content-Type = "application/jrd+json"
-    Access-Control-Allow-Origin = "*"
-

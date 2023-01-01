@@ -1,5 +1,6 @@
 // The following directive is necessary to make the package coherent:
 
+//go:build ignore
 // +build ignore
 
 // This program generates {$publish}/_redirects file. It can be invoked
@@ -35,19 +36,19 @@ func printRedirects(actor string, subdomain string) {
 	defer f.Close()
 
 	redirectsTemplate.Execute(f, struct {
-		Timestamp time.Time
-		SelfActor       string
+		Timestamp    time.Time
+		SelfActor    string
 		ResourceAcct string
 		ResourceMail string
 		ResourceBase string
 		ResourceRoot string
 	}{
-		Timestamp: time.Now(),
-		SelfActor:       actor,
-		ResourceAcct:    fmt.Sprintf("acct:%s@%s", actor, subdomain),
-		ResourceMail:    fmt.Sprintf("mailto:%s@%s", actor, subdomain),
-		ResourceBase:    fmt.Sprintf("https://%s", subdomain),
-		ResourceRoot:    fmt.Sprintf("https://%s/", subdomain),
+		Timestamp:    time.Now(),
+		SelfActor:    actor,
+		ResourceAcct: fmt.Sprintf("acct:%s@%s", actor, subdomain),
+		ResourceMail: fmt.Sprintf("mailto:%s@%s", actor, subdomain),
+		ResourceBase: fmt.Sprintf("https://%s", subdomain),
+		ResourceRoot: fmt.Sprintf("https://%s/", subdomain),
 	})
 }
 
@@ -59,13 +60,13 @@ func printWebfinger(actor string, subdomain string) {
 	defer f.Close()
 
 	webfingerTemplate.Execute(f, struct {
-		SelfActor       string
+		SelfActor    string
 		ResourceAcct string
 		ResourceRoot string
 	}{
-		SelfActor:       actor,
-		ResourceAcct:    fmt.Sprintf("acct:%s@%s", actor, subdomain),
-		ResourceRoot:    fmt.Sprintf("https://%s/", subdomain),
+		SelfActor:    actor,
+		ResourceAcct: fmt.Sprintf("acct:%s@%s", actor, subdomain),
+		ResourceRoot: fmt.Sprintf("https://%s/", subdomain),
 	})
 }
 
@@ -77,11 +78,11 @@ func printFollowers(actor string, subdomain string) {
 	defer f.Close()
 
 	followersTemplate.Execute(f, struct {
-		SelfActor       string
+		SelfActor    string
 		ResourceRoot string
 	}{
-		SelfActor:       actor,
-		ResourceRoot:    fmt.Sprintf("https://%s/", subdomain),
+		SelfActor:    actor,
+		ResourceRoot: fmt.Sprintf("https://%s/", subdomain),
 	})
 }
 
@@ -93,11 +94,11 @@ func printFollowing(actor string, subdomain string) {
 	defer f.Close()
 
 	followingTemplate.Execute(f, struct {
-		SelfActor       string
+		SelfActor    string
 		ResourceRoot string
 	}{
-		SelfActor:       actor,
-		ResourceRoot:    fmt.Sprintf("https://%s/", subdomain),
+		SelfActor:    actor,
+		ResourceRoot: fmt.Sprintf("https://%s/", subdomain),
 	})
 }
 
@@ -109,15 +110,15 @@ func printActor(actor string, subdomain string) {
 	defer f.Close()
 
 	actorTemplate.Execute(f, struct {
-		Published string
-		SelfActor       string
+		Published    string
+		SelfActor    string
 		ResourceRoot string
-		PublicPEM string
+		PublicPEM    string
 	}{
-		Published: time.Now().Format("2006-01-02T15:04:05Z"),
-		SelfActor:       actor,
-		ResourceRoot:    fmt.Sprintf("https://%s/", subdomain),
-		PublicPEM: "TODO TODO TODO",
+		Published:    time.Now().Format("2006-01-02T15:04:05Z"),
+		SelfActor:    actor,
+		ResourceRoot: fmt.Sprintf("https://%s/", subdomain),
+		PublicPEM:    "TODO TODO TODO",
 	})
 }
 
@@ -197,5 +198,3 @@ var actorTemplate = template.Must(template.New("").Parse(`
 
 }
 `))
-
-
