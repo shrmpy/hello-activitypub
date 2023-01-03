@@ -68,5 +68,28 @@ const stubSkeleton = () => {
     })
 }
 
-export { stubRedirects, stubSkeleton }
+const stubHeaders = () => {
+    const headers = []
+
+    headers.push({
+        for: '/u/*',
+        values: { 'Content-Type': "application/activity+json" },
+      },
+      {
+        for: '/l/*',
+        values: { 'Content-Type': "application/octet-stream" },
+      },
+      {
+        for: '/.well-known/webfinger',
+        values: {
+          'Content-Type': "application/jrd+json",
+          'Access-Control-Allow-Origin': "*",
+      },
+    })
+
+    return headers
+}
+
+
+export { stubRedirects, stubSkeleton, stubHeaders }
 
