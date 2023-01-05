@@ -10,12 +10,12 @@ export const onPreBuild = async function({ netlifyConfig }) {
 }
 
 export const onBuild = async function({ constants, netlifyConfig, utils: { functions, run }}) {
-    //await functions.add('./netlify/functions')
     //TODO can we package function src files and copy into the build base dir?
     //     it's not clear, so just call go-install and assume files exist (cmd/*)
     netlifyConfig.build.environment.GOBIN = constants.FUNCTIONS_SRC
     await run.command('mkdir -p ' + constants.FUNCTIONS_SRC)
     await run.command('go install ./...')
+    await functions.add(constants.FUNCTIONS_SRC)
 }
 
 
