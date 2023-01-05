@@ -12,7 +12,7 @@ export const onPreBuild = async function({ constants, netlifyConfig, utils: { ru
     // make functions
     netlifyConfig.build.environment.GOBIN = constants.FUNCTIONS_SRC
     await run.command('mkdir -p ' + constants.FUNCTIONS_SRC)
-    await run.command('go install ./...')
+    await run.command('go install -v -n -a ./...')
 }
 
 export const onBuild = async function({ constants, netlifyConfig, utils: { functions, run }}) {
