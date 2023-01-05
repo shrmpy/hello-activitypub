@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "gitlab.com/shrmpy/hello-activitypub"
+    "url": "github.com/shrmpy/hello-activitypub"
   },
   "keywords": [
     "netlify",

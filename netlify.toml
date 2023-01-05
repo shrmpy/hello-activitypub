@@ -6,14 +6,10 @@
   GITHUB_AVATAR = ""
 
 
-# astro+golang build
 [build]
-  command = "make build"
-  functions = "netlify/functions"
+  command = "astro build"
   publish = "dist"
 
-[build.environment]
-  GO111MODULE = "on"
 
 [[plugins]] 
   package = "/plugins/netlify-plugin-activitystub"
