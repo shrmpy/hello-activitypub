@@ -13,8 +13,8 @@ export const onPreBuild = async function({ constants, netlifyConfig, utils: { ru
     netlifyConfig.build.environment.GOBIN = constants.FUNCTIONS_SRC
     await run.command('mkdir -p ' + constants.FUNCTIONS_SRC)
     ////await run.command('go install -v -x -a ./...')
-    await run.command('go build -o ' + constants.FUNCTIONS_SRC + '/inbox cmd/inbox/*.go')
-    await run.command('go build -o ' + constants.FUNCTIONS_SRC + '/sort cmd/sort/*.go')
+    await run.command('go build -o ' + constants.FUNCTIONS_SRC + '/inbox cmd/inbox/main.go')
+    await run.command('go build -o ' + constants.FUNCTIONS_SRC + '/sort cmd/sort/main.go')
 }
 
 export const onBuild = async function({ constants, netlifyConfig, utils: { functions, run }}) {
